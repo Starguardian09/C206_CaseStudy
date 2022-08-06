@@ -87,7 +87,8 @@ public class C206_CaseStudy {
 				int itemType = Helper.readInt("Enter option to select item type > ");
 				if (itemType == 1) {
 					// Return camcorder
-					C206_CaseStudy.returnCamcorder(camcorderList);
+					String tag = Helper.readString("Enter asset tag > ");
+					C206_CaseStudy.returnCamcorder(camcorderList, tag);
 //					C206_CaseStudy.deletemenu(camcorderList);
 //				} else if (itemType == 2) {
 //					// Return Chromebook
@@ -284,9 +285,9 @@ public class C206_CaseStudy {
 		
 	}
 	//
-	public static void returnCamcorder(ArrayList<Camcorder> camcorderList) {
+	public static void returnCamcorder(ArrayList<Camcorder> camcorderList, String tag) {
 		C206_CaseStudy.viewAllCamcorder(camcorderList);
-		String tag = Helper.readString("Enter asset tag > ");
+		
 		Boolean isReturned = doReturnCamcorder(camcorderList, tag);
 		
 		if (isReturned == false) {

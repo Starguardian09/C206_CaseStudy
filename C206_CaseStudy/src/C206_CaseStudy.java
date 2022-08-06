@@ -287,7 +287,7 @@ public class C206_CaseStudy {
 	}
 	//
 	public static void returnCamcorder(ArrayList<Camcorder> camcorderList, String tag) {
-		C206_CaseStudy.viewAllCamcorder(camcorderList);
+//		C206_CaseStudy.viewAllCamcorder(camcorderList);
 		Boolean isReturned = doReturnCamcorder(camcorderList, tag);
 		
 		if (isReturned == false) {

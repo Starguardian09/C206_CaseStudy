@@ -11,10 +11,10 @@ private int opticalZoom;
 		return opticalZoom;
 	}
 	
-	public String toString(){
-		String output = "";
-		// Write your codes here
-		return output;
-	}
+//	public String toString(){
+//		String output = "";
+//		// Write your codes here
+//		return output;
+//	}
 }
 

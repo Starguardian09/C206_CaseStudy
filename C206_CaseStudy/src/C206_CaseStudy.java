@@ -8,7 +8,8 @@ public class C206_CaseStudy {
 		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
 //		ArrayList<Chromebook> chromebookList = new ArrayList<Chromebook>();
 
-		camcorderList.add(new Camcorder("CC001", "Sony HDR-CX405", 35));
+		Camcorder cc1 = new Camcorder("CC001", "Sony HDR-CX405", 35);
+		camcorderList.add(cc1);
 		camcorderList.add(new Camcorder("CC002", "Panasonic HC-MDH2", 10));
 //		chromebookList.add(new Chromebook("CB001", "ASUS Chromebook ", "Win 10"));
 //		chromebookList.add(new Chromebook("CB002", "HP Chromebook", "Win 10"));
@@ -287,15 +288,21 @@ public class C206_CaseStudy {
 	//
 	public static void returnCamcorder(ArrayList<Camcorder> camcorderList, String tag) {
 		C206_CaseStudy.viewAllCamcorder(camcorderList);
-		
 		Boolean isReturned = doReturnCamcorder(camcorderList, tag);
 		
 		if (isReturned == false) {
 			System.out.println("Invalid asset tag");
+			
 		} else {
-			camcorderList.remove(tag);
-			System.out.println("Camcorder " + tag + " deleted");
+		for (int i = 0; i < camcorderList.size(); i++) {
+			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
+					) {
+				camcorderList.remove(camcorderList.get(i));
+			}
 		}
+		System.out.println("Camcorder " + tag + " deleted");
+		}
+
 	}
 
 //	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList,String tag){

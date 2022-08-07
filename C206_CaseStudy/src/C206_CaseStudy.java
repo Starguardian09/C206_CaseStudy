@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
-
+		ArrayList<Nasi_Lemak_stall> HalaFoodList = new ArrayList<Nasi_Lemak_stall>();
 		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
 //		ArrayList<Chromebook> chromebookList = new ArrayList<Chromebook>();
 
@@ -194,18 +194,18 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static Chromebook inputChromebook() {	
+	public static Nasi_Lemak_stall inputMalayFodd() {	
 		
 		// write your code here
-		String tag = Helper.readString("Enter asset tag > ");
+		String foodName = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
-		String os = Helper.readString("Enter operating system > ");
+		double price = Helper.readDouble("Input price here");
 
-		Chromebook cb= new Chromebook(tag, description, os);
+		Nasi_Lemak_stall cb= new Nasi_Lemak_stall(foodName, description, price);
 		return cb;
 		
 	}	
-	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
+	public static void addChromebook(ArrayList<Nasi_Lemak_stall> chromebookList, Nasi_Lemak_stall cb) {
 		// write your code here
 		chromebookList.add(cb);
 	}

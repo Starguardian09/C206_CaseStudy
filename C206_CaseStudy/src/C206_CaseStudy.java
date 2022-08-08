@@ -5,21 +5,6 @@ public class C206_CaseStudy {
 
 	public static void main(String[] args) {
 		
-<<<<<<< HEAD
-		ArrayList<Foodcorder> foodList = new ArrayList<Foodcorder>();
-		ArrayList<Stall> stallList = new ArrayList<Stall>();
-
-		Stall sc1 = new Stall(01, "Chicken rice");
-		stallList.add(sc1);
-		
-		Stall sc2 = new Stall(02, "Nasi Lemak");
-		stallList.add(sc2);
-
-		Foodcorder cc1 = new Foodcorder("CC001", "Chicken rice", 4);
-		foodList.add(cc1);
-=======
-		// Food 
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy.git
 		
 		ArrayList<Foodcorder> foodList = new ArrayList<Foodcorder>();
 		ArrayList<Ingredient> orderList = new ArrayList<Ingredient>();
@@ -137,11 +122,12 @@ public class C206_CaseStudy {
 
 			else if (option == 3) {
 
-<<<<<<< HEAD
+
 					String tag = Helper.readString("Enter food tag > ");
 					C206_CaseStudy.returnFoodcorder(foodList, tag);
 
 			} else if (option == 4) {
+				
 				while (option != 5) {
 					C206_CaseStudy.ingredientMenu();
 					option = Helper.readInt("Enter an option > ");
@@ -153,19 +139,11 @@ public class C206_CaseStudy {
 						System.out.println("Invalid Option");
 					}
 				}
+				
 			} else if (option == 5) {
 				System.out.println("Bye!");
 			} else {
-=======
-			} 
-			
-			else if (option == 4) {
-				
-				
-			} 
-			
-			else {
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy
+
 				System.out.println("Invalid option");
 			}
 
@@ -325,25 +303,8 @@ public class C206_CaseStudy {
 		}
 
 	}
-<<<<<<< HEAD
 
-}
-//small test reuben 
-=======
-<<<<<<< HEAD
 
-	//================================= Option 4 Return an item (CRUD - Update)=================================
-	public static void ingredientMenu() {
-		C206_CaseStudy.setHeader("Order Menu");
-		System.out.println("1. View Order List");
-		System.out.println("2. Add Order");
-		System.out.println("3. Delete Order");
-		System.out.println("5. Quit");
-		Helper.line(80, "-");
-
-=======
-	
-	
 	//================================= Option 3 Delete Promotion (CRUD - Update)=================================
 	public static boolean doReturnPromotion(ArrayList<Promotion> promotionList,String tag) {
 		boolean isReturned = false;
@@ -358,30 +319,8 @@ public class C206_CaseStudy {
 			}
 		}
 		return isReturned;
-		//testing again
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy
 	}
 	
-<<<<<<< HEAD
-	public static String retrieveAllOrder(ArrayList<Ingredient> orderList) {
-		String output = "";
-
-		for (int i = 0; i < orderList.size(); i++) {
-
-			output += String.format("%-84s \n", orderList.get(i).toString());
-		}
-		return output;
-	}
-	
-	public static void viewAllOrder(ArrayList<Ingredient> orderList) {
-		C206_CaseStudy.setHeader("CAMCORDER LIST");
-		String output = String.format("%-10s %-10s %-10s %-10s %-20s %-20s\n", "ORDER ID", "NAME",
-				"ORDER DATE", "QUATITY","PRICE","DELIVERED");
-		 output += retrieveAllOrder(orderList);	
-		System.out.println(output);
-	}
-}
-=======
 	public static void returnPromotion(ArrayList<Promotion> promotionList, String tag) {
 		Boolean isReturned = doReturnPromotion(promotionList, tag);
 		
@@ -399,7 +338,37 @@ public class C206_CaseStudy {
 		}
 
 	}
+
+	//================================= Option 4 Return an item (CRUD - Update)=================================
+	public static void ingredientMenu() {
+		C206_CaseStudy.setHeader("Order Menu");
+		System.out.println("1. View Order List");
+		System.out.println("2. Add Order");
+		System.out.println("3. Delete Order");
+		System.out.println("5. Quit");
+		Helper.line(80, "-");
 	}
+
+	public static String retrieveAllOrder(ArrayList<Ingredient> orderList) {
+		String output = "";
+
+		for (int i = 0; i < orderList.size(); i++) {
+
+			output += String.format("%-84s \n", orderList.get(i).toString());
+		}
+		return output;
+	}
+	
+	public static void viewAllOrder(ArrayList<Ingredient> orderList) {
+		C206_CaseStudy.setHeader("CAMCORDER LIST");
+		String output = String.format("%-10s %-10s %-10s %-10s %-20s %-20s\n", "ORDER ID", "NAME",
+				"ORDER DATE", "QUATITY","PRICE","DELIVERED");
+		 output += retrieveAllOrder(orderList);	
+		System.out.println(output);
+	}
+	
+	
+
+}
 //small test reuben ???
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy.git
+

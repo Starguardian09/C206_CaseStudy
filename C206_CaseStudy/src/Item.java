@@ -37,7 +37,7 @@ public class Item {
 		return assetTag;
 	}
 
-	public String getDescription() {
+	public String getName() {
 		return description;
 	}
 

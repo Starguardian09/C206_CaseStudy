@@ -16,20 +16,20 @@ import java.util.ArrayList;
  *
  */
 public class Stall {
-	  private int stallId;
+	  private String stallId;
 	  private String stallName;
 
-	  public Stall(int stallId, String stallName) {
+	  public Stall(String stallId, String stallName) {
 	    super();
 	    this.stallId = stallId;
 	    this.stallName = stallName;
 	  }
 
-	  public int getStallId() {
+	  public String getStallId() {
 	    return stallId;
 	  }
 
-	  public void setStallId(int stallId) {
+	  public void setStallId(String stallId) {
 	    this.stallId = stallId;
 	  }
 

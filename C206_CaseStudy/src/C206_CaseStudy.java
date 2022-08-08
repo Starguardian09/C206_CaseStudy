@@ -6,6 +6,13 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		
 		ArrayList<Foodcorder> foodList = new ArrayList<Foodcorder>();
+		ArrayList<Stall> stallList = new ArrayList<Stall>();
+
+		Stall sc1 = new Stall(01, "Chicken rice");
+		stallList.add(sc1);
+		
+		Stall sc2 = new Stall(02, "Nasi Lemak");
+		stallList.add(sc2);
 
 		Foodcorder cc1 = new Foodcorder("CC001", "Chicken rice", 4);
 		foodList.add(cc1);
@@ -49,6 +56,7 @@ public class C206_CaseStudy {
 				System.out.println("Invalid option");
 			}
 
+			
 		}
 
 	}
@@ -145,5 +153,6 @@ public class C206_CaseStudy {
 		}
 
 	}
-	}
+
+}
 //small test reuben 

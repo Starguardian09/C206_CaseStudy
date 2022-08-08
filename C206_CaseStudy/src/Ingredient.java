@@ -28,6 +28,23 @@ public class Ingredient {
 		this.isDelivered = true;
 	}
 	
+	/**
+	 * @param string
+	 * @param string2
+	 * @param string3
+	 * @param i
+	 * @param d
+	 * @param b
+	 */
+	public Ingredient(String orderID, String name, String orderDate, int quantity, double price, boolean isDelivered) {
+		this.orderID = orderID;
+		this.name = name;
+		this.orderDate = orderDate;
+		this.quantity = quantity;
+		this.price = price;
+		this.isDelivered = isDelivered;
+	}
+
 	public String toString() {
 		
 		String itemInfo = String.format("%-10s %-30s %-10s %-10s", 

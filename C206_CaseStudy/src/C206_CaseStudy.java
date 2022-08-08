@@ -6,12 +6,18 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		
 		ArrayList<Foodcorder> foodList = new ArrayList<Foodcorder>();
-
-		Foodcorder cc1 = new Foodcorder("CC001", "Chicken rice", 4);
-		foodList.add(cc1);
+		ArrayList<Ingredient> orderList = new ArrayList<Ingredient>();
 		
+		Foodcorder cc1 = new Foodcorder("CC001", "Chicken rice", 4);
 		Foodcorder cc2 = new Foodcorder("CC002", "Nasi Lemak", 4);
+				
+		Ingredient ig1 = new Ingredient("OR001", "Green Onion", "08/08/2022", 10, 1.5, false);
+		Ingredient ig2 = new Ingredient("OR002", "Tomato", "07/07/2022", 20, 2.0, false);
+		
+		foodList.add(cc1);
 		foodList.add(cc2);
+		orderList.add(ig1);
+		orderList.add(ig2);
 		
 		int option = 0;
 
@@ -43,6 +49,18 @@ public class C206_CaseStudy {
 					String tag = Helper.readString("Enter food tag > ");
 					C206_CaseStudy.returnFoodcorder(foodList, tag);
 
+			} else if (option == 4) {
+				while (option != 5) {
+					C206_CaseStudy.ingredientMenu();
+					option = Helper.readInt("Enter an option > ");
+					if (option == 1) {
+						C206_CaseStudy.viewAllOrder(orderList);
+					} else if (option == 5) {
+						System.out.println("Good bye!");
+					} else {
+						System.out.println("Invalid Option");
+					}
+				}
 			} else if (option == 5) {
 				System.out.println("Bye!");
 			} else {
@@ -58,6 +76,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Display menu");
 		System.out.println("2. Add food");
 		System.out.println("3. Delete food");
+		System.out.println("4. Ingredients");
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
 
@@ -145,5 +164,33 @@ public class C206_CaseStudy {
 		}
 
 	}
+
+	//================================= Option 4 Return an item (CRUD - Update)=================================
+	public static void ingredientMenu() {
+		C206_CaseStudy.setHeader("Order Menu");
+		System.out.println("1. View Order List");
+		System.out.println("2. Add Order");
+		System.out.println("3. Delete Order");
+		System.out.println("5. Quit");
+		Helper.line(80, "-");
+
 	}
-//small test reuben 
+	
+	public static String retrieveAllOrder(ArrayList<Ingredient> orderList) {
+		String output = "";
+
+		for (int i = 0; i < orderList.size(); i++) {
+
+			output += String.format("%-84s \n", orderList.get(i).toString());
+		}
+		return output;
+	}
+	
+	public static void viewAllOrder(ArrayList<Ingredient> orderList) {
+		C206_CaseStudy.setHeader("CAMCORDER LIST");
+		String output = String.format("%-10s %-10s %-10s %-10s %-20s %-20s\n", "ORDER ID", "NAME",
+				"ORDER DATE", "QUATITY","PRICE","DELIVERED");
+		 output += retrieveAllOrder(orderList);	
+		System.out.println(output);
+	}
+}

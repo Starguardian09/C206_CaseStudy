@@ -7,11 +7,8 @@ public class C206_CaseStudy {
 		
 		
 		ArrayList<Foodcorder> foodList = new ArrayList<Foodcorder>();
-<<<<<<< HEAD
 		ArrayList<Promotion> promotionList = new ArrayList<Promotion>();
 		ArrayList<Stall> stallList = new ArrayList<Stall>();
-=======
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy.git
 		ArrayList<Ingredient> orderList = new ArrayList<Ingredient>();
 
 		
@@ -139,7 +136,6 @@ public class C206_CaseStudy {
 					} else if (option == 2){
 						C206_CaseStudy.setHeader("ADD STALL");      
 
-<<<<<<< HEAD
 				          Stall st = inputStall();
 				          C206_CaseStudy.addStall(stallList, st);
 				          System.out.println("Stall added");
@@ -158,11 +154,6 @@ public class C206_CaseStudy {
 						
 					}
 				}
-=======
-
-					String tag = Helper.readString("Enter food tag > ");
-					C206_CaseStudy.returnFoodcorder(foodList, tag);
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy.git
 
 			} else if (option == 4) {
 				
@@ -343,11 +334,7 @@ public class C206_CaseStudy {
 	}
 
 
-<<<<<<< HEAD
 	//================================= Option 2 Delete Promotion (CRUD - Update)=================================
-=======
-	//================================= Option 3 Delete Promotion (CRUD - Update)=================================
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy.git
 	public static boolean doReturnPromotion(ArrayList<Promotion> promotionList,String tag) {
 		boolean isReturned = false;
 
@@ -381,26 +368,16 @@ public class C206_CaseStudy {
 
 	}
 
-<<<<<<< HEAD
 	//================================= Option 3 Stall (CRUD - Update)=================================
 	public static void stallMenu() {
 		C206_CaseStudy.setHeader("Stall Menu");
 		System.out.println("1. View Stall List");
 		System.out.println("2. Add Stall");
 		System.out.println("3. Delete Stall");
-=======
-	//================================= Option 4 Return an item (CRUD - Update)=================================
-	public static void ingredientMenu() {
-		C206_CaseStudy.setHeader("Order Menu");
-		System.out.println("1. View Order List");
-		System.out.println("2. Add Order");
-		System.out.println("3. Delete Order");
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy.git
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
 	}
 
-<<<<<<< HEAD
 	public static String retrieveAllStall(ArrayList<Stall> stallList) {
 		String output = "";
 
@@ -490,27 +467,6 @@ public class C206_CaseStudy {
 		 output += retrieveAllOrder(orderList);	
 		System.out.println(output);
 	}
-=======
-	public static String retrieveAllOrder(ArrayList<Ingredient> orderList) {
-		String output = "";
-
-		for (int i = 0; i < orderList.size(); i++) {
-
-			output += String.format("%-84s \n", orderList.get(i).toString());
-		}
-		return output;
-	}
-	
-	public static void viewAllOrder(ArrayList<Ingredient> orderList) {
-		C206_CaseStudy.setHeader("CAMCORDER LIST");
-		String output = String.format("%-10s %-10s %-10s %-10s %-20s %-20s\n", "ORDER ID", "NAME",
-				"ORDER DATE", "QUATITY","PRICE","DELIVERED");
-		 output += retrieveAllOrder(orderList);	
-		System.out.println(output);
-	}
-	
-	
->>>>>>> branch 'master' of https://github.com/Starguardian09/C206_CaseStudy.git
 
 }
 //small test reuben ???

@@ -21,8 +21,8 @@ public class C206_CaseStudy {
 		Stall st1 = new Stall("ST001","Ah Huat Chicken Rice");
 		Stall st2 = new Stall("ST002","Muhd Nasi Briyani");
 				
-		Ingredient ig1 = new Ingredient("OR001", "Green Onion", "08/08/2022", 10, 1.5, false);
-		Ingredient ig2 = new Ingredient("OR002", "Tomato", "07/07/2022", 20, 2.0, false);
+		Ingredient ig1 = new Ingredient("ST001","Ah Huat Chicken Rice", "Green Onion", "08/08/2022", 10, 1.5, false);
+		Ingredient ig2 = new Ingredient("ST002","Muhd Nasi Briyani", "Tomato", "07/07/2022", 20, 2.0, false);
 		
 		
 		foodList.add(cc1);
@@ -125,7 +125,7 @@ public class C206_CaseStudy {
 		
 				
 			} 
-
+			//STALL OPTION
 			else if (option == 3) {
 				while (option != 5) {
 					C206_CaseStudy.stallMenu();
@@ -154,18 +154,35 @@ public class C206_CaseStudy {
 						
 					}
 				}
-
+			//ORDER OPTION
 			} else if (option == 4) {
 				
 				while (option != 5) {
 					C206_CaseStudy.ingredientMenu();
 					option = Helper.readInt("Enter an option > ");
+					
 					if (option == 1) {
 						C206_CaseStudy.viewAllOrder(orderList);
+						
+					}else if (option == 2){
+						C206_CaseStudy.setHeader("ADD ORDER of INGREDIENT");      
+
+				          Ingredient or = inputOrder(stallList);
+				          C206_CaseStudy.addOrder(stallList,orderList, or);
+				          
+					}else if (option == 3){
+						C206_CaseStudy.setHeader("DELETE ORDER");        
+
+				          String stallId = Helper.readString("Enter Stall ID > ");
+				          String ingrName = Helper.readString("Enter Ingredient Name > ");
+				          C206_CaseStudy.deleteOrder(orderList, stallId, ingrName);
+				          
 					} else if (option == 5) {
 						System.out.println("Good bye!");
+						
 					} else {
 						System.out.println("Invalid Option");
+						
 					}
 				}
 				
@@ -455,19 +472,94 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < orderList.size(); i++) {
 
-			output += String.format("%-84s \n", orderList.get(i).toString());
+			output += String.format("%-110s \n", orderList.get(i).toString());
 		}
 		return output;
 	}
 	
 	public static void viewAllOrder(ArrayList<Ingredient> orderList) {
 		C206_CaseStudy.setHeader("INGREDIENT LIST");
-		String output = String.format("%-10s %-10s %-10s %-10s %-20s %-20s\n", "ORDER ID", "NAME",
+		String output = String.format("%-10s %-25s %-25s %-20s %-10s %-10s %-10s\n", "STALL ID","STALL NAME", "INGREDIENT NAME",
 				"ORDER DATE", "QUATITY","PRICE","DELIVERED");
 		 output += retrieveAllOrder(orderList);	
 		System.out.println(output);
 	}
+	
+	public static Ingredient inputOrder(ArrayList<Stall> stallList) {
+		String stId = Helper.readString("Enter stall ID > ");
+		String stName = "";
+		for (int i = 0; i < stallList.size(); i++) {
+			if (stId.equalsIgnoreCase(stallList.get(i).getStallId())) {
+				stName = stallList.get(i).getStallName();
+			}
+		}
+		
+		String name = Helper.readString("Enter Ingredient Name > ");
+		String orderDate = Helper.readString("Enter Date of Order > ");
+		int quantity = Helper.readInt("Enter Quantity > ");
+		double price = Helper.readDouble("Enter Ingredient Price > ");
+		boolean isDelivered = Helper.readBoolean("Enter Delivered Status > ");
+
+		Ingredient or = new Ingredient(stId, stName, name, orderDate, quantity, price, isDelivered);
+		return or;
+		
+	}
+	
+	public static void addOrder(ArrayList<Stall> stallList, ArrayList<Ingredient> orderList, Ingredient or) {
+		boolean able = false;
+	
+		for (int i = 0; i < stallList.size(); i++) {
+			if (or.getStallId().equalsIgnoreCase(stallList.get(i).getStallId())) {
+				able = true;
+			}
+		}
+		if (able) {
+			orderList.add(or);
+			System.out.println("Order Successfully Added");
+		} else {
+			System.out.println("Order Cannot be Added as Stall does not exist");
+		}
+		
+	}
+	
+	public static boolean doDeleteOrder(ArrayList<Ingredient> orderList, String stallId, String ingrName) {
+		boolean isDeleted = false;
+
+		for (int i = 0; i < orderList.size(); i++) {
+			if (stallId.equalsIgnoreCase(orderList.get(i).getStallId()) && ingrName.equalsIgnoreCase(orderList.get(i).getName())) {
+				
+				isDeleted = true;
+				
+			}
+		}
+		return isDeleted;
+	}
+	
+	public static void deleteOrder(ArrayList<Ingredient> orderList, String stallId, String ingrName) {
+		Boolean isDeleted = doDeleteOrder(orderList, stallId, ingrName);
+		String igName = "";
+		int igAmt = 0;
+		String stName = "";
+		
+		if (isDeleted == false) {
+			System.out.println("Stall and/or Order Name not found.");
+			
+		} else {
+			
+			for (int i = 0; i < orderList.size(); i++) {
+				if (stallId.equalsIgnoreCase(orderList.get(i).getStallId()) && ingrName.equalsIgnoreCase(orderList.get(i).getName())) {
+					igName = orderList.get(i).getName();
+					igAmt = orderList.get(i).getQuantity();
+					stName = orderList.get(i).getStallName();
+					orderList.remove(orderList.get(i));
+					
+				}
+				
+			}
+			System.out.println("Order of " + igAmt + " " + igName + " from" + stName + " deleted");
+		}
+
+	}
 
 }
-//small test reuben ???
 

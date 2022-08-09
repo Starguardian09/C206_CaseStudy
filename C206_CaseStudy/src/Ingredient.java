@@ -14,7 +14,7 @@
  *
  */
 public class Ingredient extends Stall{
-	private String orderID;
+//	private String uniqueId;
 	private String name;
 	private String orderDate;
 	private int quantity;
@@ -31,8 +31,8 @@ public class Ingredient extends Stall{
 	 * @param d
 	 * @param b
 	 */
-	public Ingredient(int stallId, String stallName, String name, String orderDate, int quantity, double price, boolean isDelivered) {
-		super(stallId,stallName);
+	public Ingredient(String stallId, String stallName,  /*String uniqueId,*/ String name, String orderDate, int quantity, double price, boolean isDelivered) {
+		super(stallId, stallName);
 		this.name = name;
 		this.orderDate = orderDate;
 		this.quantity = quantity;
@@ -42,11 +42,14 @@ public class Ingredient extends Stall{
 
 	public String toString() {
 		
-		String itemInfo = String.format("%-10s %-30s %-10s %-10s", 
-				orderID,
-				name, 
-				showAvailability(isDelivered),	
-				orderDate);
+		String itemInfo = String.format("%-10s %-25s %-25s %-20s %-10s %-10s %-10s", 
+				getStallId(),
+				getStallName(),
+				name,
+				orderDate,
+				quantity,
+				price,
+				showAvailability(isDelivered));
 		return itemInfo;
 	}
 	
@@ -61,9 +64,6 @@ public class Ingredient extends Stall{
 		return avail;
 	}
 	
-	public String getorderID() {
-		return orderID;
-	}
 
 	public String getName() {
 		return name;

@@ -65,7 +65,7 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Foodcorder arraylist to add to", promotionList);
 		
 		//Given an empty list, after adding 1 item, the size of the list is 1
-		C206_CaseStudy.addPromotion(promotionList, cc1);		
+		C206_CaseStudy.addPromotion(promotionList, pc1);		
 		assertEquals("Test if that Foodcorder arraylist size is 1?", 1, promotionList.size());
 		
 		//The item just added is as same as the first item of the list

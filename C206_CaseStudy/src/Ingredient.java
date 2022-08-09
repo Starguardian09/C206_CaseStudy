@@ -13,7 +13,7 @@
  * @author 21019352
  *
  */
-public class Ingredient {
+public class Ingredient extends Stall{
 	private String orderID;
 	private String name;
 	private String orderDate;
@@ -21,12 +21,7 @@ public class Ingredient {
 	private double price;
 	private boolean isDelivered;
 //test
-	public Ingredient(String orderID, String name) {
-		this.orderID = orderID;
-		this.name = name;
-		this.orderDate = "";
-		this.isDelivered = true;
-	}
+
 	
 	/**
 	 * @param string
@@ -36,8 +31,8 @@ public class Ingredient {
 	 * @param d
 	 * @param b
 	 */
-	public Ingredient(String orderID, String name, String orderDate, int quantity, double price, boolean isDelivered) {
-		this.orderID = orderID;
+	public Ingredient(int stallId, String stallName, String name, String orderDate, int quantity, double price, boolean isDelivered) {
+		super(stallId,stallName);
 		this.name = name;
 		this.orderDate = orderDate;
 		this.quantity = quantity;

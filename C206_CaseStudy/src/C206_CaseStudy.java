@@ -524,7 +524,7 @@ public class C206_CaseStudy {
 	
 	public static boolean doDeleteOrder(ArrayList<Ingredient> orderList, String stallId, String ingrName) {
 		boolean isDeleted = false;
-
+//check for ingr name and stall
 		for (int i = 0; i < orderList.size(); i++) {
 			if (stallId.equalsIgnoreCase(orderList.get(i).getStallId()) && ingrName.equalsIgnoreCase(orderList.get(i).getName())) {
 				

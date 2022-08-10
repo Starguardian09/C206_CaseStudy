@@ -526,6 +526,7 @@ public class C206_CaseStudy {
 		if (able) {
 			orderList.add(or);
 			System.out.println("Order Successfully Added");
+		
 		} else {
 			System.out.println("Order Cannot be Added as Stall does not exist");
 		}

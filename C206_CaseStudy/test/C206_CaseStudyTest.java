@@ -57,8 +57,8 @@ public class C206_CaseStudyTest {
 		st2 = new Stall("ST002" , "Muhd Nasi Briyani");
 		
 		// ingredient
-		In1 = new Ingredient("In001","Ah Huat Chicken Rice","Chilli paddi", "22/10/22", 40, 22.50, true);
-		In2 = new Ingredient("In002","Muhd Nasi Briyani", "Kampong Chicken", "24/9/22", 50, 82.50, true);
+		In1 = new Ingredient("ST001","Ah Huat Chicken Rice","Chilli paddi", "22/10/22", 40, 22.50, true);
+		In2 = new Ingredient("ST002","Muhd Nasi Briyani", "Kampong Chicken", "24/9/22", 50, 82.50, true);
 		
 		FoodcorderList = new ArrayList<Foodcorder>();
 		promotionList = new ArrayList<Promotion>();
@@ -244,6 +244,9 @@ public class C206_CaseStudyTest {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid order arraylist to add to", orderList);
 
+		//In order for Order Request to be added, stall must first exist in the Canteen database to assign the ingredient to
+		C206_CaseStudy.addStall(stallList, st1);
+		
 		// Given an empty list, after adding 1 item, the size of the list is 1
 		C206_CaseStudy.addOrder(stallList,orderList,In1);
 		assertEquals("Test if that order arraylist size is 1?", 1, orderList.size());
@@ -251,21 +254,23 @@ public class C206_CaseStudyTest {
 		// The item just added is as same as the first item of the list
 		assertSame("Test that stall is added same as 1st item of the list?", In1, orderList.get(0));
 
-	}@Test
+	}
+	@Test
 	public void testDeleteOrder() {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid order arraylist to add to", orderList);
+		//In order for Order to be added, stall must first exist in the canteen database 
+		C206_CaseStudy.addStall(stallList, st1);
 		
-		Boolean Isdelete = C206_CaseStudy.doDeleteOrder(orderList, "ST001", "Chilli paddi");
 		// Given an empty list, after adding 1 item, the size of the list is 1
 		C206_CaseStudy.addOrder(stallList,orderList, In1);
 		assertEquals("Test if that stall arraylist size is 1?", 1, orderList.size());
-
+		
 		// The item just added is as same as the first item of the list
+		Boolean Isdelete = C206_CaseStudy.doDeleteOrder(orderList, "ST001", "Chilli paddi");
 		assertTrue("Test that stall is added same as 1st item of the list?", Isdelete);
 		Isdelete = C206_CaseStudy.doDeleteOrder(orderList, "ST001", "In1");
 		assertFalse("Test if non-existing stall ST0013 is returned - false?", Isdelete);
-	
 	
 	}
 	@Test
@@ -275,6 +280,10 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Check that ViewAllorderlist", testOutput, allorder);
 
+		//In order for Order to be added, stall must first exist in the canteen database 
+		C206_CaseStudy.addStall(stallList, st1); 
+		C206_CaseStudy.addStall(stallList, st2);
+		
 		// Given an empty list, after adding 2 items, test if the size of the list is 2
 		C206_CaseStudy.addOrder(stallList,orderList, In1);
 		C206_CaseStudy.addOrder(stallList,orderList, In2);
@@ -285,8 +294,8 @@ public class C206_CaseStudyTest {
 		// from the SourceCentre
 		allorder = C206_CaseStudy.retrieveAllOrder(orderList);
 
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-10s %-10s %-10s \n", "ST001", "Ah Huat Chicken Rice","Chilli paddi", "22/10/22", 40, 22.50, true);
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-10s %-10s %-10s\n", "ST002", "Muhd Nasi Briyani","Kampong Chicken", "24/9/22", 50, 82.50, true); 
+		testOutput = String.format("%-10s %-25s %-25s %-20s %-10s %-10s %-10s\n", "ST001", "Ah Huat Chicken Rice","Chilli paddi", "22/10/22", 40, 22.50, "Yes");
+		testOutput += String.format("%-10s %-25s %-25s %-20s %-10s %-10s %-10s\n", "ST002", "Muhd Nasi Briyani","Kampong Chicken", "24/9/22", 50, 82.50, "Yes"); 
 
 		assertEquals("Check that ViewAllorderlist", testOutput, allorder);
 

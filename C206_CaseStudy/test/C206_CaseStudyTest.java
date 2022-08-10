@@ -53,6 +53,7 @@ public class C206_CaseStudyTest {
 
 		FoodcorderList = new ArrayList<Foodcorder>();
 		promotionList = new ArrayList<Promotion>();
+		stallList = new ArrayList<Stall>();
 
 	}
 
@@ -193,6 +194,39 @@ public class C206_CaseStudyTest {
 		testOutput += String.format("%-10s %-30s\n", "ST002", "Muhd Nasi Briyani");
 
 		assertEquals("Check that ViewAllStalllist", testOutput, allStallcorder);
+
+	}
+	
+	@Test
+	public void testAddStall() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid stall arraylist to add to", stallList);
+
+		// Given an empty list, after adding 1 item, the size of the list is 1
+		C206_CaseStudy.addStall(stallList, st1);
+		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+
+		// The item just added is as same as the first item of the list
+		assertSame("Test that stall is added same as 1st item of the list?", st1, stallList.get(0));
+
+	}
+	
+	@Test
+	public void testDoReturnStall() {
+		// boundary
+		assertNotNull("Test if there is valid Stall arraylist to add to", stallList);
+		C206_CaseStudy.addStall(stallList, st1);
+		// error
+		Boolean isReturned = C206_CaseStudy.doDeleteStall(stallList, "ST001");
+		assertTrue("Test if available Stall ST001 is returned -false?", isReturned);
+		// normal
+//		C206_CaseStudy.addFoodcorder(FoodcorderList, cc2);
+//		cc2.setIsAvailable(false);
+//		isReturned = C206_CaseStudy.doReturnFoodcorder(FoodcorderList, "CC002");
+//		assertTrue("Test if loaned out amcorder CC0012 is returned- true", isReturned);
+		// error
+		isReturned = C206_CaseStudy.doDeleteStall(stallList, "ST0013");
+		assertFalse("Test if non-existing stall ST0013 is returned - false?", isReturned);
 
 	}
 	

@@ -482,7 +482,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < orderList.size(); i++) {
 
-			output += String.format("%-110s \n", orderList.get(i).toString());
+			output += String.format("%-110s\n", orderList.get(i).toString());
 		}
 		return output;
 	}

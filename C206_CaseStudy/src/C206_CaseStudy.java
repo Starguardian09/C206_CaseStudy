@@ -74,6 +74,7 @@ public class C206_CaseStudy {
 
 						String tag = Helper.readString("Enter promo tag > ");
 						PromotionList.returnPromotion(promotionList, tag);
+						
 
 					} else if (option == 5) {
 						System.out.println("Bye!");
@@ -115,8 +116,12 @@ public class C206_CaseStudy {
 
 						String tag = Helper.readString("Enter food tag > ");
 						C206_CaseStudy.returnFoodcorder(foodList, tag);
+					}
+//					else if (option == 4) {
+//						C206_CaseStudy.viewAllOrder(orderList);
+//						}
 
-					} else if (option == 5) {
+					 else if (option == 5) {
 						System.out.println("Bye!");
 					} else {
 						System.out.println("Invalid option");
@@ -229,7 +234,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Display food");
 		System.out.println("2. Add food");
 		System.out.println("3. Delete food");
-		System.out.println("4. Ingredients");
+//		System.out.println("4. Ingredients");
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
 
